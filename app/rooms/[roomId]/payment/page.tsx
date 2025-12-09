@@ -186,8 +186,8 @@ export default function PaymentPage({
                           key={method.value}
                           className={`w-full p-3 text-left border-2 rounded-lg transition-colors ${
                             selectedMethod === method.value
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
+                              ? 'border-blue-500 bg-blue-50 text-blue-700'
+                              : 'border-gray-200 hover:border-gray-300 text-gray-700'
                           }`}
                           onClick={() => setSelectedMethod(method.value as PaymentMethod)}
                         >

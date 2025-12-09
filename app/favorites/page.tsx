@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { baeminApi } from '@/lib/api/baemin-api';
 import { StoreDto } from '@/types/api';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { BottomNavigation } from '@/components/layout';
+import { getStoreImage } from '@/lib/utils/image-helpers';
 
 export default function FavoritesPage() {
   const router = useRouter();
@@ -65,11 +68,14 @@ export default function FavoritesPage() {
                  onClick={() => router.push(`/stores/${store.storeId}`)}
                  className="flex p-5 gap-4 bg-white hover:bg-gray-50 cursor-pointer"
                >
-                 {store.thumbnailUrl && (
-                   <div className="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden shrink-0">
-                      <img src={store.thumbnailUrl} alt="" className="w-full h-full object-cover" />
-                   </div>
-                 )}
+                  <div className="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden shrink-0 relative">
+                     <Image 
+                       src={getStoreImage(store.category, store.storeId)} 
+                       alt={store.storeName} 
+                       fill
+                       className="object-cover" 
+                     />
+                  </div>
                  <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-lg text-gray-900 truncate mb-1">{store.storeName}</h3>
                     <div className="flex items-center gap-1 text-sm text-gray-600 mb-1">
@@ -87,6 +93,8 @@ export default function FavoritesPage() {
           </div>
         )}
       </main>
+
+      <BottomNavigation />
     </div>
   );
 }

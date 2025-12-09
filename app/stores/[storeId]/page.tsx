@@ -2,10 +2,12 @@
 
 import { useState, useCallback, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { baeminApi } from '@/lib/api/baemin-api';
 import { useAuth } from '@/lib/contexts/AuthContext';
 import { StoreDetailResponse, MenuDto } from '@/types/api';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { getStoreImage, getMenuImage } from '@/lib/utils/image-helpers';
 
 export default function StoreDetailPage({
   params,
@@ -134,11 +136,14 @@ export default function StoreDetailPage({
       <main className="max-w-md mx-auto pt-14">
         {/* Store Info */}
         <div className="bg-white mb-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-           {store.thumbnailUrl && (
-             <div className="w-full h-48 bg-gray-200">
-                <img src={store.thumbnailUrl} alt={store.storeName} className="w-full h-full object-cover" />
-             </div>
-           )}
+           <div className="w-full h-48 bg-gray-200 relative">
+              <Image 
+                src={getStoreImage(undefined, store.storeId)} 
+                alt={store.storeName} 
+                fill
+                className="object-cover" 
+              />
+           </div>
            <div className="p-5">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">{store.storeName}</h2>
               <div className="flex items-center gap-1.5 text-sm mb-4">
@@ -283,11 +288,14 @@ export default function StoreDetailPage({
                        {!menu.isAvailable && <span className="text-xs text-red-500 font-bold mt-1 inline-block">품절</span>}
                        {menu.isPopular && <span className="text-xs text-[#2AC1BC] border border-[#2AC1BC] px-1 rounded ml-2">인기</span>}
                     </div>
-                    {menu.imageUrl && (
-                       <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0">
-                          <img src={menu.imageUrl} alt={menu.menuName} className="w-full h-full object-cover" />
-                       </div>
-                    )}
+                    <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0 relative">
+                       <Image 
+                         src={getMenuImage(menu.menuName, menu.menuId)} 
+                         alt={menu.menuName} 
+                         fill
+                         className="object-cover" 
+                       />
+                    </div>
                  </div>
                ))}
              </div>

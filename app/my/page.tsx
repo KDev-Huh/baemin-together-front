@@ -1,8 +1,10 @@
 'use client';
-
+ 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useAuth } from '@/lib/contexts/AuthContext';
 import { Button } from '@/components/ui';
+import { BottomNavigation } from '@/components/layout';
 
 export default function MyPage() {
   const router = useRouter();
@@ -28,8 +30,13 @@ export default function MyPage() {
       <div className="bg-white mb-3">
         {isAuthenticated && user ? (
           <div className="p-5 flex items-center gap-4">
-             <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden">
-                <img src={`https://api.dicebear.com/7.x/micah/svg?seed=${user.email}`} alt="avatar" className="w-full h-full object-cover" />
+             <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden relative">
+                <Image 
+                  src={`https://api.dicebear.com/7.x/micah/svg?seed=${user.email}`} 
+                  alt="avatar" 
+                  fill
+                  className="object-cover" 
+                />
              </div>
              <div className="flex-1">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
@@ -108,6 +115,8 @@ export default function MyPage() {
              </button>
          </div>
       )}
+
+      <BottomNavigation />
     </div>
   );
 }

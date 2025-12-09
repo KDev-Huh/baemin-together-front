@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { baeminApi } from '@/lib/api/baemin-api';
 import { RoomDetailResponse } from '@/types/api';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { BottomNavigation } from '@/components/layout';
 
 export default function OrdersPage() {
   const router = useRouter();
@@ -84,6 +85,8 @@ export default function OrdersPage() {
           </div>
         )}
       </main>
+
+      <BottomNavigation />
     </div>
   );
 }

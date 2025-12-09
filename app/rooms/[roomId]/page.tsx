@@ -461,7 +461,7 @@ export default function RoomPage({
                     onClick={() => handleSelectSettlement(SettlementMethod.MENU_BASED)}
                     className={`flex-1 py-3 rounded-xl font-medium text-sm border transition-all ${
                        settlementMethod === SettlementMethod.MENU_BASED 
-                          ? 'bg-mint text-white border-mint shadow-md' 
+                          ? 'bg-mint text-black border-mint shadow-md' 
                           : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                     }`}
                  >
@@ -471,7 +471,7 @@ export default function RoomPage({
                     onClick={() => handleSelectSettlement(SettlementMethod.EQUAL_SPLIT)}
                     className={`flex-1 py-3 rounded-xl font-medium text-sm border transition-all ${
                        settlementMethod === SettlementMethod.EQUAL_SPLIT
-                          ? 'bg-mint text-white border-mint shadow-md' 
+                          ? 'bg-mint text-black border-mint shadow-md' 
                           : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                     }`}
                  >
