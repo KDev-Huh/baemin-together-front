@@ -137,11 +137,11 @@ export default function StoreDetailPage({
         {/* Store Info */}
         <div className="bg-white mb-3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
            <div className="w-full h-48 bg-gray-200 relative">
-              <Image 
-                src={getStoreImage(undefined, store.storeId)} 
-                alt={store.storeName} 
+              <Image
+                src={store.thumbnailUrl || getStoreImage(undefined, store.storeId)}
+                alt={store.storeName}
                 fill
-                className="object-cover" 
+                className="object-cover"
               />
            </div>
            <div className="p-5">
@@ -289,11 +289,11 @@ export default function StoreDetailPage({
                        {menu.isPopular && <span className="text-xs text-[#2AC1BC] border border-[#2AC1BC] px-1 rounded ml-2">인기</span>}
                     </div>
                     <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0 relative">
-                       <Image 
-                         src={getMenuImage(menu.menuName, menu.menuId)} 
-                         alt={menu.menuName} 
+                       <Image
+                         src={menu.imageUrl || getMenuImage(menu.menuName, menu.menuId)}
+                         alt={menu.menuName}
                          fill
-                         className="object-cover" 
+                         className="object-cover"
                        />
                     </div>
                  </div>

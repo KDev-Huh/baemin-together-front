@@ -69,11 +69,11 @@ export default function FavoritesPage() {
                  className="flex p-5 gap-4 bg-white hover:bg-gray-50 cursor-pointer"
                >
                   <div className="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden shrink-0 relative">
-                     <Image 
-                       src={getStoreImage(store.category, store.storeId)} 
-                       alt={store.storeName} 
+                     <Image
+                       src={store.thumbnailUrl || getStoreImage(store.category, store.storeId)}
+                       alt={store.storeName}
                        fill
-                       className="object-cover" 
+                       className="object-cover"
                      />
                   </div>
                  <div className="flex-1 min-w-0">

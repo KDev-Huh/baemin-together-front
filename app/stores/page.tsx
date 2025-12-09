@@ -99,9 +99,9 @@ export default function StoresPage() {
               >
                   {/* Thumbnail */}
                   <div className="w-24 h-24 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 relative">
-                     <Image 
-                       src={getStoreImage(category === '전체' ? undefined : category, store.storeId)} 
-                       alt={store.storeName} 
+                     <Image
+                       src={store.thumbnailUrl || getStoreImage(category === '전체' ? undefined : category, store.storeId)}
+                       alt={store.storeName}
                        fill
                        className="object-cover"
                      />
