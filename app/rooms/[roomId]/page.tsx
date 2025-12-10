@@ -401,7 +401,7 @@ export default function RoomPage({
                                   >
                                     -
                                   </button>
-                                  <span className="text-sm font-bold w-4 text-center">{quantity}</span>
+                                  <span className="text-sm font-bold w-4 text-black text-center">{quantity}</span>
                                   <button 
                                     onClick={() => setQuantity(quantity + 1)}
                                     className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 rounded text-gray-600 hover:bg-gray-50"
